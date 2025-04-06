@@ -37,6 +37,24 @@ mat-sidenav-content {
   padding: 20px;
   height: calc(100vh - 64px);
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--blue-0);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray-0);
+    border-radius: 4px;
+    
+    &:hover {
+      background: var(--gray-5);
+    }
+  }
 }
 
 .app-container {
@@ -68,7 +86,10 @@ mat-nav-list {
 
     a.mdc-list-item {
       &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
+        background-color: var(--orange-0);
+        color: var(--white);
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
       }
     }
   }

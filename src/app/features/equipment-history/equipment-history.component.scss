@@ -1,11 +1,29 @@
 .history-panel {
   background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-height: 500px;
-  overflow-y: auto;
-  position: relative;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    position: relative;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--blue-0);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--gray-0);
+    border-radius: 4px;
+    
+    &:hover {
+      background: var(--gray-5);
+    }
+  }
 
   .close-button {
     position: absolute;
@@ -40,7 +58,7 @@
   h2 {
     margin: 0 0 1rem 0;
     font-size: 1.2rem;
-    color: #333;
+    color: var(--blue-10);
     padding-right: 2.5rem;
   }
 
