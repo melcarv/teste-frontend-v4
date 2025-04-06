@@ -18,13 +18,11 @@
   background-color: var(--white);
 }
 
-.sidenav-item {
-}
-
 mat-sidenav-content {
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-x: hidden;
 }
 
 .toolbar {
@@ -32,31 +30,19 @@ mat-sidenav-content {
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin: 20px;
+  margin: 20px 0 0 25px;
 }
 
 .content {
   padding: 20px;
   height: calc(100vh - 64px);
-  overflow: hidden;
+  overflow: auto;
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
-
-.app-header {
-  background-color: #1976d2;
-  color: white;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-  h1 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
 }
 
 .app-main {
@@ -71,10 +57,19 @@ mat-sidenav-content {
 
 mat-nav-list {
   padding-top: 120px;
-}
 
-mat-list-item {
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+  ::ng-deep {
+    .mdc-list-item.active {
+      background-color: var(--green);
+      color: var(--white);
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+
+    a.mdc-list-item {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+    }
   }
 }

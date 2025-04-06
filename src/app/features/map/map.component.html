@@ -1,11 +1,15 @@
-<div class="map-container">
-  <div id="map" class="map"></div>
-  
-  <app-equipment-history
-    *ngIf="selectedEquipment"
-    [equipment]="selectedEquipment"
-    [equipmentStates]="equipmentStates"
-    [stateHistory]="selectedStateHistory"
-    (closeHistory)="closeHistory()">
-  </app-equipment-history>
+<div class="map-wrapper">
+  <h2 class="map-title">Mapa de equipamentos</h2>
+  <hr class="map-divider">
+  <div class="map-container">
+    <div id="map" class="map"></div>
+    
+    <app-equipment-history
+      *ngIf="selectedEquipment"
+      [equipment]="selectedEquipment"
+      [equipmentStates]="equipmentStates"
+      [stateHistory]="selectedStateHistory"
+      (closeHistory)="closeHistory()">
+    </app-equipment-history>
+  </div>
 </div> 
