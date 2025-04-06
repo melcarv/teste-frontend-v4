@@ -21,7 +21,6 @@ export class EquipmentHistoryComponent {
 
   @HostListener('document:click', ['$event'])
   clickOutside(event: Event) {
-    // Ignora o primeiro clique (que é o clique que abre o histórico)
     if (this.isInitialClick) {
       this.isInitialClick = false;
       return;
@@ -29,14 +28,12 @@ export class EquipmentHistoryComponent {
 
     const targetElement = event.target as HTMLElement;
     
-    // Verifica se o clique foi fora do componente
     if (!this.elementRef.nativeElement.contains(targetElement)) {
-      // Verifica se o clique não foi em elementos do mapa
       const isMapClick = 
-        targetElement.closest('.leaflet-marker-icon') || // Marcadores
-        targetElement.closest('.leaflet-popup') || // Popups
-        targetElement.closest('.leaflet-control-zoom') || // Controles de zoom
-        targetElement.closest('.map'); // O próprio mapa
+        targetElement.closest('.leaflet-marker-icon') ||
+        targetElement.closest('.leaflet-popup') ||
+        targetElement.closest('.leaflet-control-zoom') ||
+        targetElement.closest('.map');
 
       if (!isMapClick) {
         this.close();

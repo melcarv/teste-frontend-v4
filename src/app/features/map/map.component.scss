@@ -2,24 +2,6 @@
   display: block;
   width: 100%;
   overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--blue-0);
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--gray-0);
-    border-radius: 4px;
-    
-    &:hover {
-      background: var(--gray-5);
-    }
-  }
 }
 
 .map-wrapper {
@@ -30,14 +12,15 @@
   padding: 25px 35px;
   margin: 0 25px;
   box-sizing: border-box;
+  box-shadow: var(--shadow-sm);
 }
 
 .map-title {
   font-size: 1.8rem;
-    color: var(--gray-15);
-    margin: 0 0 25px 0;
-    font-family: "Manrope", sans-serif;
-    letter-spacing: 0.02em;
+  color: var(--gray-15);
+  margin: 0 0 25px 0;
+  font-family: "Manrope", sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .map-divider {
@@ -96,15 +79,42 @@ app-equipment-history {
   }
 }
 
-.equipment-hover-popup {
+.equipment-popup {
   .leaflet-popup-content-wrapper {
     padding: 0;
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
   }
 
   .leaflet-popup-content {
     margin: 0;
     width: auto !important;
+  }
+
+  .equipment-info {
+    padding: 15px;
+    min-width: 200px;
+    background-color: var(--white);
+
+    h3 {
+      margin: 0 0 10px 0;
+      color: var(--blue-10);
+      font-family: "Manrope", sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+    }
+
+    p {
+      margin: 8px 0;
+      color: var(--gray-5);
+      font-size: 0.9rem;
+
+      strong {
+        color: var(--gray-15);
+        font-weight: 600;
+        margin-right: 4px;
+      }
+    }
   }
 }

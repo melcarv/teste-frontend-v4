@@ -58,14 +58,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   private loadData(): void {
-    console.log('Loading data...');
-    
     this.equipmentService.getEquipments().pipe(
       switchMap(equipments => {
-        console.log('Loaded equipments:', equipments);
         return this.equipmentService.getEquipmentStates().pipe(
           map(states => {
-            console.log('Loaded states:', states);
             this.equipmentStates = states.reduce((acc, state) => {
               acc[state.id] = state;
               return acc;
@@ -77,7 +73,6 @@ export class MapComponent implements OnInit, AfterViewInit {
       switchMap(equipments => {
         return this.equipmentService.getEquipmentModels().pipe(
           map(models => {
-            console.log('Loaded models:', models);
             this.equipmentModels = models.reduce((acc, model) => {
               acc[model.id] = model;
               return acc;
@@ -87,22 +82,16 @@ export class MapComponent implements OnInit, AfterViewInit {
         );
       }),
       catchError(error => {
-        console.error('Error loading data:', error);
         return of([]);
       })
     ).subscribe(equipments => {
-      console.log('All data loaded, processing equipments:', equipments);
       equipments.forEach(equipment => {
         this.equipmentService.getEquipmentPositionHistory(equipment.id).subscribe(
           positionHistory => {
-            console.log('Position history for equipment', equipment.id, ':', positionHistory);
             if (positionHistory && positionHistory.positions.length > 0) {
               const latestPosition = positionHistory.positions[positionHistory.positions.length - 1];
               this.addMarker(equipment, latestPosition);
             }
-          },
-          error => {
-            console.error('Error loading position history for equipment', equipment.id, ':', error);
           }
         );
       });
@@ -110,24 +99,15 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   private addMarker(equipment: Equipment, position: { lat: number; lon: number }): void {
-    if (!this.map) {
-      console.error('Map is not initialized');
-      return;
-    }
-
-    console.log('Adding marker for equipment:', equipment);
-    console.log('Position:', position);
+    if (!this.map) return;
 
     const model = this.equipmentModels[equipment.equipmentModelId];
-    console.log('Model:', model);
 
     this.equipmentService.getEquipmentStateHistory(equipment.id).subscribe(
       stateHistory => {
         if (stateHistory && stateHistory.states.length > 0) {
           const latestStateId = stateHistory.states[stateHistory.states.length - 1].equipmentStateId;
           const state = this.equipmentStates[latestStateId];
-          console.log('State:', state);
-
           const color = state?.color || '#000000';
 
           const marker = L.circleMarker([position.lat, position.lon], {
@@ -151,17 +131,14 @@ export class MapComponent implements OnInit, AfterViewInit {
             </div>
           `);
 
-          // Mostra o popup quando o mouse passar sobre o marcador
           marker.on('mouseover', function (e) {
             marker.bindPopup(popup).openPopup();
           });
 
-          // Fecha o popup quando o mouse sair do marcador
           marker.on('mouseout', function (e) {
             marker.closePopup();
           });
 
-          // Seleciona o equipamento ao clicar
           marker.on('click', () => {
             this.selectedEquipment = equipment;
             this.loadEquipmentHistory(equipment.id);
@@ -170,22 +147,16 @@ export class MapComponent implements OnInit, AfterViewInit {
           marker.addTo(this.map!);
           this.markers.push(marker);
         }
-      },
-      error => {
-        console.error('Error loading state history for equipment', equipment.id, ':', error);
       }
     );
   }
 
   private loadEquipmentHistory(equipmentId: string): void {
-    console.log('Loading history for equipment:', equipmentId);
     this.equipmentService.getEquipmentStateHistory(equipmentId).subscribe(
       history => {
-        console.log('Loaded state history:', history);
         this.selectedStateHistory = history;
       },
       error => {
-        console.error('Error loading equipment history:', error);
         this.selectedStateHistory = null;
       }
     );
