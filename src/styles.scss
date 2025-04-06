@@ -1,13 +1,26 @@
 @use "@angular/material" as mat;
-
 @import "leaflet/dist/leaflet.css";
 
-html, body {
+:root {
+  --white: #fff;
+  --blue-0: #f3f6f7;
+  --blue-5: #012355;
+  --blue-10: #002255;
+  --gray-0: #7e95b8;
+  --gray-5: #444444;
+  --gray-10: #d6deeb;
+  --green: #00c100;
+  --orange: #ed1c24;
+}
+
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: Roboto, sans-serif;
+  font-family: "Inter", sans-serif;
   overflow: hidden;
+  background-color: var(--blue-0);
 }
 
 .leaflet-container {
@@ -15,7 +28,6 @@ html, body {
   height: 100%;
 }
 
-// Corrigir o z-index do mapa em relação ao Material
 .leaflet-pane {
   z-index: 1;
 }
@@ -25,7 +37,6 @@ html, body {
   z-index: 1000;
 }
 
-// Garantir que o mapa ocupe todo o espaço disponível
 app-map {
   display: flex;
   flex: 1;

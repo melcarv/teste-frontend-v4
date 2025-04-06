@@ -2,28 +2,21 @@
   <mat-sidenav #sidenav mode="side" opened class="sidenav">
     <mat-nav-list>
       <a mat-list-item routerLink="/map" routerLinkActive="active">
-        <mat-icon matListItemIcon>map</mat-icon>
-        <span matListItemTitle>Mapa</span>
-      </a>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
-        <mat-icon matListItemIcon>dashboard</mat-icon>
-        <span matListItemTitle>Dashboard</span>
+        <mat-icon class="sidenav-item" matListItemIcon>map</mat-icon>
       </a>
       <a mat-list-item routerLink="/equipment" routerLinkActive="active">
-        <mat-icon matListItemIcon>build</mat-icon>
-        <span matListItemTitle>Equipamentos</span>
+        <mat-icon class="sidenav-item" matListItemIcon>agriculture</mat-icon>
+      </a>
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon class="sidenav-item" matListItemIcon>dashboard</mat-icon>
       </a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary" class="toolbar">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Forestry Equipment Tracker</span>
+    <mat-toolbar class="toolbar">
+      <img class="logo" src="assets/images/aiko-logo.png" alt="" />
     </mat-toolbar>
-
     <div class="content">
       <router-outlet></router-outlet>
     </div>
