@@ -5,6 +5,7 @@
     *ngIf="selectedEquipment"
     [equipment]="selectedEquipment"
     [equipmentStates]="equipmentStates"
-    [stateHistory]="selectedStateHistory">
+    [stateHistory]="selectedStateHistory"
+    (closeHistory)="closeHistory()">
   </app-equipment-history>
 </div> 

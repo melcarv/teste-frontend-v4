@@ -30,7 +30,7 @@ mat-sidenav-content {
 .content {
   padding: 20px;
   height: calc(100vh - 64px);
-  overflow: auto;
+  overflow: hidden;
 }
 
 .app-container {

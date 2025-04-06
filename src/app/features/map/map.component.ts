@@ -40,17 +40,18 @@ export class MapComponent implements OnInit, AfterViewInit {
   private initMap(): void {
     if (this.map) return;
 
-    this.map = L.map('map').setView([-19.126536, -45.947756], 13);
+    this.map = L.map('map', {
+      zoomControl: false
+    }).setView([-19.126536, -45.947756], 11);
+    
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map);
 
-    // Add zoom controls
     L.control.zoom({
       position: 'topright'
     }).addTo(this.map);
 
-    // Force map resize after initialization
     setTimeout(() => {
       this.map?.invalidateSize();
     }, 0);
@@ -59,11 +60,9 @@ export class MapComponent implements OnInit, AfterViewInit {
   private loadData(): void {
     console.log('Loading data...');
     
-    // Load equipment data
     this.equipmentService.getEquipments().pipe(
       switchMap(equipments => {
         console.log('Loaded equipments:', equipments);
-        // Load equipment states
         return this.equipmentService.getEquipmentStates().pipe(
           map(states => {
             console.log('Loaded states:', states);
@@ -76,7 +75,6 @@ export class MapComponent implements OnInit, AfterViewInit {
         );
       }),
       switchMap(equipments => {
-        // Load equipment models
         return this.equipmentService.getEquipmentModels().pipe(
           map(models => {
             console.log('Loaded models:', models);
@@ -94,7 +92,6 @@ export class MapComponent implements OnInit, AfterViewInit {
       })
     ).subscribe(equipments => {
       console.log('All data loaded, processing equipments:', equipments);
-      // Load position history for each equipment
       equipments.forEach(equipment => {
         this.equipmentService.getEquipmentPositionHistory(equipment.id).subscribe(
           positionHistory => {
@@ -124,7 +121,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     const model = this.equipmentModels[equipment.equipmentModelId];
     console.log('Model:', model);
 
-    // Get the latest state for this equipment
     this.equipmentService.getEquipmentStateHistory(equipment.id).subscribe(
       stateHistory => {
         if (stateHistory && stateHistory.states.length > 0) {
@@ -143,7 +139,10 @@ export class MapComponent implements OnInit, AfterViewInit {
             fillOpacity: 0.8
           });
 
-          marker.bindPopup(`
+          const popup = L.popup({
+            closeButton: false,
+            offset: L.point(0, -5)
+          }).setContent(`
             <div class="equipment-popup">
               <h3>${equipment.name}</h3>
               <p>Modelo: ${model?.name || 'Desconhecido'}</p>
@@ -152,6 +151,17 @@ export class MapComponent implements OnInit, AfterViewInit {
             </div>
           `);
 
+          // Mostra o popup quando o mouse passar sobre o marcador
+          marker.on('mouseover', function (e) {
+            marker.bindPopup(popup).openPopup();
+          });
+
+          // Fecha o popup quando o mouse sair do marcador
+          marker.on('mouseout', function (e) {
+            marker.closePopup();
+          });
+
+          // Seleciona o equipamento ao clicar
           marker.on('click', () => {
             this.selectedEquipment = equipment;
             this.loadEquipmentHistory(equipment.id);
@@ -179,5 +189,10 @@ export class MapComponent implements OnInit, AfterViewInit {
         this.selectedStateHistory = null;
       }
     );
+  }
+
+  closeHistory(): void {
+    this.selectedEquipment = null;
+    this.selectedStateHistory = null;
   }
 } 
