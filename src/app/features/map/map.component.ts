@@ -144,10 +144,10 @@ export class MapComponent implements OnInit, AfterViewInit {
             offset: L.point(0, -5)
           }).setContent(`
             <div class="equipment-popup">
-              <h3>${equipment.name}</h3>
-              <p>Modelo: ${model?.name || 'Desconhecido'}</p>
-              <p>Estado: ${state?.name || 'Desconhecido'}</p>
-              <p>Última atualização: ${new Date().toLocaleString()}</p>
+              <h3 class="equipment-name">${equipment.name}</h3>
+              <p><strong>Modelo:</strong> ${model?.name || 'Desconhecido'}</p>
+              <p><strong>Estado:</strong> ${state?.name || 'Desconhecido'}</p>
+              <p><strong>Última atualização:</strong> ${new Date().toLocaleString()}</p>
             </div>
           `);
 
