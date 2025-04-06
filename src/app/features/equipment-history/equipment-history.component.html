@@ -1,0 +1,16 @@
+<div class="history-panel" *ngIf="equipment">
+  <h2>Histórico de {{ equipment.name }}</h2>
+  
+  <div class="history-section">
+    <h3>Estados</h3>
+    <div class="history-list">
+      <div *ngFor="let state of stateHistory?.states" class="history-item">
+        <div class="state-indicator" [style.background-color]="getStateColor(state.equipmentStateId)"></div>
+        <div class="state-info">
+          <span class="state-name">{{ getStateText(state.equipmentStateId) }}</span>
+          <span class="state-time">{{ state.date | date:'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

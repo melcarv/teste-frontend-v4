@@ -1,6 +1,3 @@
-// ============================
-// README.md (Documentação do Projeto)
-// ============================
 # 🌲 Dashboard Florestal - Frontend
 
 Projeto frontend para visualização de dados operacionais de equipamentos utilizados em uma operação florestal. Desenvolvido com Angular 19, Angular Material e Leaflet.
@@ -20,7 +17,7 @@ src/
 │   ├── core/services/data.service.ts   # Serviço para leitura dos arquivos JSON
 │   ├── features/
 │   │   ├── dashboard/map/              # Mapa com visualização dos equipamentos
-│   │   └── equipment/                  # Componente de equipamentos (placeholder)
+│   │   └── equipment/                  # Componente de equipamentos
 │   └── app.component.                 
 ├── assets/data/                        # Dados JSON fornecidos
 │   ├── equipment.json

@@ -1,0 +1,8 @@
+<mat-card>
+  <h2>Lista de Equipamentos</h2>
+  <mat-list>
+    <mat-list-item *ngFor="let equipment of equipments">
+      {{ equipment.name }} - {{ getModelName(equipment.equipmentModelId) }}
+    </mat-list-item>
+  </mat-list>
+</mat-card>

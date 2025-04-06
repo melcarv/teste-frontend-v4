@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Histórico de {{ data.equipmentName }}</h2>
+<mat-dialog-content>
+  <ul>
+    <li *ngFor="let entry of data.history">{{ entry }}</li>
+  </ul>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

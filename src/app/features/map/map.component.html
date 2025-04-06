@@ -1,0 +1,10 @@
+<div class="map-container">
+  <div id="map" class="map"></div>
+  
+  <app-equipment-history
+    *ngIf="selectedEquipment"
+    [equipment]="selectedEquipment"
+    [equipmentStates]="equipmentStates"
+    [stateHistory]="selectedStateHistory">
+  </app-equipment-history>
+</div> 
