@@ -42,7 +42,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     this.map = L.map('map', {
       zoomControl: false
-    }).setView([-19.126536, -45.947756], 11);
+    }).setView([-19.126536, -45.947756], 10);
     
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
@@ -113,10 +113,10 @@ export class MapComponent implements OnInit, AfterViewInit {
           const marker = L.circleMarker([position.lat, position.lon], {
             radius: 10,
             fillColor: color,
-            color: '#000',
+            color: '#fff',
             weight: 1,
             opacity: 1,
-            fillOpacity: 0.8
+            fillOpacity: 1
           });
 
           const popup = L.popup({
