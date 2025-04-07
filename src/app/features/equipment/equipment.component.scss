@@ -16,4 +16,55 @@ mat-card {
     width: 100%;
   }
 }
+
+::ng-deep :host {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.equipment-wrapper {
+  max-width: 100%;
+  background-color: var(--white);
+  border-radius: 25px;
+  padding: 25px 35px;
+  margin: 0 25px;
+  box-sizing: border-box;
+  box-shadow: var(--shadow-sm);
+}
+
+.equipment-title {
+  font-size: 1.8rem;
+  color: var(--gray-15);
+  margin: 0 0 25px 0;
+  font-family: "Manrope", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.equipment-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--gray-10);
+  margin: 0 0 20px 0;
+}
+
+.equipment-container {
+  width: 96%;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.equipment-table {
+  width: 50%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+th.mat-mdc-header-cell {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--blue-10);
+}
   

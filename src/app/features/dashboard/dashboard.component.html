@@ -1,0 +1,39 @@
+<div class="dashboard-wrapper">
+  <h1 class="dashboard-title">Dashboard</h1>
+  <div class="dashboard-container">
+    <mat-grid-list cols="2" rowHeight="200px" gutterSize="30">
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Total de Equipamentos</mat-card-title>
+          <mat-card-content>
+            <h2>{{ totalEquipment }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Equipamentos em Operação</mat-card-title>
+          <mat-card-content>
+            <h2>{{ equipmentInOperation }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Equipamentos em Manutenção</mat-card-title>
+          <mat-card-content>
+            <h2>{{ equipmentInMaintenance }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-title>Equipamentos Parados</mat-card-title>
+          <mat-card-content>
+            <h2>{{ equipmentStopped }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div> 
