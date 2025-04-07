@@ -1,4 +1,4 @@
-##🌲 Dashboard Florestal - Frontend
+🌲 Dashboard Florestal - Frontend
 
 Projeto frontend para visualização de dados operacionais de equipamentos utilizados em uma operação florestal. Desenvolvido com Angular 19, Angular Material e Leaflet.
 
