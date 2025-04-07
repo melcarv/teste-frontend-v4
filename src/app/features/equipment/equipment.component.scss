@@ -57,14 +57,53 @@ mat-card {
 }
 
 .equipment-table {
-  width: 50%;
+  width: 100%;
   border-radius: 10px;
   margin-top: 10px;
+  overflow-x: auto;
 }
 
 th.mat-mdc-header-cell {
   font-weight: 700;
   font-size: 16px;
   color: var(--blue-10);
+}
+
+@media screen and (max-width: 768px) {
+  .equipment-wrapper {
+    padding: 15px 20px;
+    margin: 0 15px;
+  }
+
+  .equipment-title {
+    font-size: 1.5rem;
+  }
+
+  .equipment-container {
+    width: 100%;
+  }
+
+  .equipment-table {
+    min-width: 600px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .equipment-wrapper {
+    padding: 10px 15px;
+    margin: 0 10px;
+  }
+
+  .equipment-title {
+    font-size: 1.2rem;
+  }
+
+  .equipment-container {
+    width: 100%;
+  }
+
+  .equipment-table {
+    min-width: 500px;
+  }
 }
   
