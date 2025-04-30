@@ -1,8 +1,6 @@
-# 🌲 Dashboard Florestal - Frontend
+# 🌲 Dashboard
 
 Projeto frontend para visualização de dados operacionais de equipamentos utilizados em uma operação florestal. Desenvolvido com Angular 19, Angular Material e Leaflet.
-
-Video apresentação: https://drive.google.com/file/d/1O-ibCEC2ta7GbW-VPdBPMlwScSEqd-iP/view?usp=sharing.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -15,7 +13,7 @@ Video apresentação: https://drive.google.com/file/d/1O-ibCEC2ta7GbW-VPdBPMlwSc
 
 ## 📌 Funcionalidades
 
-Funcionalidades principais (requisitos obrigatórios):
+Funcionalidades principais:
 
 - Exibição dos equipamentos no mapa com base na posição mais recente
 - Visualização do nome do equipamento, estado atual e posição via popup
@@ -54,7 +52,3 @@ src/
 - Ser possível pesquisar por dados de um equipamento especifico
 - Diferenciar visualmente os equipamentos por modelo de equipamento na visualização do mapa
 - Que seja possível visualizar o histórico de posições de um equipamento, mostrando o trajeto realizado por ele
-
-## 🧑‍💻 Autor
-
-Projeto desenvolvido como parte de um desafio técnico frontend.
